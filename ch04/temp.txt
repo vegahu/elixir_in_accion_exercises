@@ -1,0 +1,12 @@
+todo_list = TodoList.new
+TodoList.add_entry(todo_list, %{date: {2013, 12, 19}, title: "Dentist"})
+TodoList.add_entry(todo_list, %{date: {2013, 12, 20}, title: "Shopping"})
+TodoList.add_entry(todo_list, %{date: {2013, 12, 19}, title: "Movies"})
+TodoList.entries(todo_list, {2013, 12, 19})
+
+TodoList.update_entry(todo_list,1,&Map.put(&1, :date, {2013, 12, 20}))
+
+
+entries
+  |> Stream.filter(fn({_, entry}) -> entry.date == date end)
+  |> Enum.map(fn({_, entry}) -> entry end)
